@@ -1,4 +1,4 @@
-import dao.ClientDao;
+import dao.ClientDaoImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import service.Client;
@@ -6,7 +6,7 @@ import service.Client;
 import java.util.ArrayList;
 
 public class ClientDaoTest {
-    ClientDao clientDao = new ClientDao();
+    ClientDaoImpl clientDao = new ClientDaoImpl();
 
     @Test
     public void testGetClientById() {
@@ -14,14 +14,14 @@ public class ClientDaoTest {
         Assert.assertEquals(clientName, "Клиент1", "Имя не соответсвует ожидаемому");
     }
 
-    @Test (enabled = false)
+    @Test
     public void testSelectAll() {
         ArrayList<Client> arrayList = clientDao.selectAllUsers();
         int arraySize = arrayList.size();
         Assert.assertEquals(arraySize, 5, "Количество элементов в базе не соответсвует ожидаемому");
     }
 
-    @Test (enabled = false)
+    @Test
     public void testInsertClient() {
         Client client2 = new Client(5, "test1");
         clientDao.insertClient(client2);
@@ -29,7 +29,7 @@ public class ClientDaoTest {
         Assert.assertEquals(testName, "test1", "Вставка нового клиента завершилась неудачно");
     }
 
-    @Test (enabled = false)
+    @Test
     public void testUpdateClient() {
         Client client3 = new Client(2, "Тест Update2");
         clientDao.updateClient(client3);
@@ -37,7 +37,7 @@ public class ClientDaoTest {
         Assert.assertEquals(testName, "Тест Update2", "Обновление информации о клиенте завершилось неудачно");
     }
 
-    @Test (enabled = false)
+    @Test
     public void testDeleteClient() {
 
         ArrayList<Client> arrayList2 = clientDao.selectAllUsers();
