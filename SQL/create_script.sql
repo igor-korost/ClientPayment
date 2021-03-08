@@ -27,9 +27,10 @@ CREATE TABLE `card` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_card_payment`
     FOREIGN KEY (`id_card`)
-    REFERENCES `payment` (`id_payment`)
+    REFERENCES `payment` (`id_card`)
     ON DELETE CASCADE
     ON UPDATE CASCADE) 
 ENGINE = InnoDB;
 
 CREATE INDEX `fk_card_client_idx` ON `card` (`id_client` ASC) ;
+CREATE INDEX `fk_card_payment_idx` ON `payment` (`id_card` ASC) ;
